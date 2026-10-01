@@ -1,11 +1,10 @@
-public class Treasure
+public class Treasure extends Entity
 {
-   private String name;
-   private String origin;
-   
+   /**
+      Created and managed by Reid Penwarden - Parent class to all treasures, handles name and origin.
+   */
    public Treasure(String name, String origin)
    {
-      this.name = name;
-      this.origin = origin;
+      super(name, origin);
    }
 }
