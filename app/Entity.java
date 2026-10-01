@@ -16,7 +16,7 @@ public abstract class Entity
    public abstract String getAction();
    public abstract String getType();
    */ 
-   // FIX ME - Implement everywhere!
+   //FIX ME - Implement everywhere!
    
    
    public String toString(String name, String origin)
