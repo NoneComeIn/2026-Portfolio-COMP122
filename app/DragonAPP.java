@@ -15,5 +15,9 @@ public class DragonAPP
       {
          System.out.println(treasure.calcValue());
       }
+      for(Relic relic : relics)
+      {
+         System.out.println(relic.calcValue());
+      }
    }
 }

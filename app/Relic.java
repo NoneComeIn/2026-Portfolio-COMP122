@@ -4,6 +4,7 @@ public class Relic extends Treasure
    public Relic(String name, String origin, Chamber chamber)
    {
       super(name, origin);
+      this.currentChamber = chamber;
    }
    public int calcValue()
    {
