@@ -2,6 +2,12 @@ public class DragonAPP
 {
    public static void main(String[] args)
    {
-      
+      Treasure[] treasures = {
+      new Gemstone("Reid's Ruby", "Not affiliated to his ex"), 
+      new Gemstone("Lincolns Kidney Stone", "It just plopped out")};
+      for(Treasure treasure : treasures)
+      {
+         treasure.calcValue();
+      }
    }
 }
