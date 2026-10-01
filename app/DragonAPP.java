@@ -4,7 +4,8 @@ public class DragonAPP
    {
       Treasure[] treasures = {
       new Gemstone("Reid's Ruby", "Not affiliated to his ex"), 
-      new Gemstone("Lincolns Kidney Stone", "It just plopped out")};
+      new Gemstone("Lincolns Kidney Stone", "It just plopped out"),
+      new Relic("test", "test")};
       for(Treasure treasure : treasures)
       {
          System.out.println(treasure.calcValue());
