@@ -1,7 +1,15 @@
 public class Mercenary extends Entity
 {
-   public Mercenary(String name, String origin)
+   private int noOGuards;
+   private int dailyRate;
+   public Mercenary(String name, int noOGuards, int dailyRate)
    {
-      super(name, origin);
+      super(name);
+      this.dailyRate = dailyRate;
+      this.noOGuards = noOGuards;
+   }
+   public int calcValue()
+   {
+      return noOGuards + dailyRate * 30;
    }
 }

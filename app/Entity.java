@@ -4,12 +4,10 @@ public abstract class Entity
       Created and managed by Reid Penwarden. Parent class to Mercenary and Treasure.
    */
    private String name;
-   private String origin;
    
-   public Entity(String name, String origin)
+   public Entity(String name)
    {
       this.name = name;
-      this.origin = origin;
    }
    /*
    public abstract String getAtributes();
