@@ -7,7 +7,7 @@ public class DragonAPP
       new Gemstone("Lincolns Kidney Stone", "It just plopped out")};
       for(Treasure treasure : treasures)
       {
-         treasure.calcValue();
+         System.out.println(treasure.calcValue());
       }
    }
 }
