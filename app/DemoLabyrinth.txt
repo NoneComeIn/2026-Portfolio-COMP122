@@ -1,0 +1,23 @@
+11
+0 false 10
+1 false 40
+2 false 30
+3 false 110
+4 false 120
+5 false 80
+6 false 60
+7 true |test item|Was found in a nearby shoe
+8 true |The magic doom sword of destiny and chaos|I mugged a protagonist
+9 false 90
+10 true |Donald Trump|Whaaa...? That's not meant to be in here.
+0 1 2 3
+1 4 5
+2 6
+3 7
+4 8
+5 2 8
+6 9
+7
+8
+9 7 8 10
+10

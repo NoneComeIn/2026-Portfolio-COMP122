@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Labyrinth{
    /** Labyrinth class made by Lincoln.*/
