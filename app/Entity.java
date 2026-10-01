@@ -25,6 +25,6 @@ public abstract class Entity
    {
       return name + origin;
    }
-   public abstract double calcValue();
+   public abstract int calcValue();
  
 }

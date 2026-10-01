@@ -11,12 +11,12 @@ public class Gemstone extends Treasure
       this.weight = random.nextInt(26);
       this.clarityScore = random.nextInt(11);
    }
-   public double calcValue()
+   public int calcValue()
    {
-      double value = (weight * clarityScore * 50) + getAvgAppraisal();
+      int value = (weight * clarityScore * 50) + getAvgAppraisal();
       return value;
    }
-   public double getAvgAppraisal()
+   public int getAvgAppraisal()
    {
       Random random2 = new Random();
       int[] appraisalList = new int[10];

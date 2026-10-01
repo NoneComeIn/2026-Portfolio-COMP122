@@ -7,7 +7,7 @@ public class Treasure extends Entity
    {
       super(name, origin);
    }
-   public double calcValue()
+   public int calcValue()
    {
       return -1;
    }
