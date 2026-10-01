@@ -2,20 +2,26 @@ import java.util.ArrayList;
 
 public class Labyrinth{
    /** Labyrinth class made by Lincoln.*/
-   Chamber entrance;
+   private Chamber entrance;
    
    public static void main(String[] args){
       //FIX ME this is jsut for debug. Remove from final.
+      Labyrinth tester = new Labyrinth();
+      tester.display();
    }
    
    public Labyrinth(){
       // FIX ME this hardcoded mini labyrinth is just for testing.
       Chamber leaf = new Chamber(new Relic("test item", "I found it in my shoe"));
-      Chamber node = new Chamber(20);
+      Chamber leafUnreach = new Chamber(new Relic("The magic doom sword of destiny", "I mugged a protagonist"));
+      Chamber node = new Chamber(200);
       node.passages.add(leaf);
+      node.passages.add(leafUnreach);
       entrance = new Chamber(30);
       entrance.passages.add(node);
       entrance.passages.add(leaf);
+      
+      updateReachable();
    }
    
    /** Recursively raverses the labyrinth and updates which nodes are reachable.
@@ -41,16 +47,20 @@ public class Labyrinth{
    
    
    /** Displays the nodes of the labyrinth*/
-   public void displayLabyrinth(){
+   public void display(){
+      ArrayList<Chamber> visited = new ArrayList<Chamber>();
       ArrayList<Chamber> rooms = new ArrayList<Chamber>();
       rooms.add(entrance);
       
-      while (!rooms.isEmpty()){ 
+      for (int i = 0; !rooms.isEmpty(); i++){ 
          Chamber room = rooms.get(0);
          rooms.remove(0);
-         rooms.addAll(room.passages);
          
-         System.out.println(room);
+         if (!visited.contains(room)){ //only print each room once.
+            visited.add(room);
+            rooms.addAll(room.passages);
+            System.out.println("Room " + i+ room);
+         }
       }
    }
    
@@ -87,7 +97,7 @@ public class Labyrinth{
          return passages.isEmpty();
       }
       public String toString(){
-         return "".format("is %sblocked, is %sreachable%s.", isBlocked() ? "" : "not ", reachable ? "" : "not ", isLeaf() ? ", and contains a relic" : "");
+         return "".format(" is %sblocked, is %sreachable%s.", isBlocked() ? "" : "not ", reachable ? "" : "not ", isLeaf() ? ", and contains a relic" : "");
       }
    }
 }
