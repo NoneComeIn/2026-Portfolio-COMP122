@@ -1,0 +1,22 @@
+This is the planning document for task 2 The Dragons Den by Reid Penwarden and Lincoln Rimmer:
+
+
+There are two types of treasure, Gemstones and Relics. Under a type "Treasure". For each treasure record, name, origin, and a list of its last 10 appraisal values.
+
+The formula for each appraisal value is calculated as such:
+
+Gemstones - value = (weight * clarityScore * 50) + avgAppraisal - Where weight is in "ct" (> 0), clarityScore is (1 - 10), and avgAppraisal is the average of the last 10 appraisals (>= 10)
+
+Relics - Hidden in the leaf nodes of the network. Each node contains a danger level and a collection of connected chambers. An intruder starts at the entrance and moves through the network. A chamber is blocked of dangerLevel > 100 which means the path cannot be used. 
+The system should recursively explore all possible paths through the network to figure out whether an intruder can reach a relic hidden at the end of the network. value = 250 if reachable else 10,000
+
+Treasure items can be sorted based on value from highest to lowest. 
+
+The threatLevel of a treasure item is determined by:
+0 - if value < 100
+1 - if value is < 500
+2 - if value is < 1500
+3 - if value is < 5000
+4 - if value is < 10000
+5 - if value is >= 10000
+
