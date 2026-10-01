@@ -9,6 +9,6 @@ public class Treasure extends Entity
    }
    public double calcValue()
    {
-      return 0;
+      return -1;
    }
 }
