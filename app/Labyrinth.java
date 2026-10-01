@@ -97,7 +97,7 @@ public class Labyrinth{
          return passages.isEmpty();
       }
       public String toString(){
-         return "".format(" is %sblocked, is %sreachable%s.", isBlocked() ? "" : "not ", reachable ? "" : "not ", isLeaf() ? ", and contains a relic" : "");
+         return "".format(" is %sblocked and is %sreachable.%s", isBlocked() ? "" : "not ", reachable ? "" : "not ", isLeaf() ? " Contains a relic." : "");
       }
    }
 }
