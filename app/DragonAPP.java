@@ -4,8 +4,8 @@ public class DragonAPP
    {
       Treasure[] treasures = {
       new Gemstone("Reid's Ruby", "Not affiliated to his ex"), 
-      new Gemstone("Lincolns Kidney Stone", "It just plopped out"),
-      new Relic("test", "test")};
+      new Gemstone("Lincolns Kidney Stone", "It just plopped out")
+      };
       
       Labyrinth tester = new Labyrinth();
       tester.display();
