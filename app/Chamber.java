@@ -11,10 +11,6 @@ public class Chamber{
       I am assuming that there are no cycles in the graph.*/
       ArrayList<Chamber> passages = new ArrayList<Chamber>();
       
-      public Chamber(int danger, ArrayList<Chamber> connectedRooms){
-         this.danger = danger;
-         this.passages = connectedRooms;
-      }
       public Chamber(int danger){
          this.danger = danger;
       }
