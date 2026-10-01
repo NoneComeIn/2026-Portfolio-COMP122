@@ -1,6 +1,6 @@
 public class Relic extends Treasure
 {
-   private boolean relicIsReachable;
+   private boolean relicIsReachable; // FIX THIS - Change to chamber.reachable()
    public Relic(String name, String origin, Chamber chamber)
    {
       super(name, origin);
