@@ -39,13 +39,13 @@ public class Labyrinth{
          rooms.remove(0);
          rooms.addAll(room.passages);
          
-         room.reachable = false;
+         room.setReachable(false);
       }
       traverseLabyrinth(entrance, 0);
    }
    private void traverseLabyrinth(Chamber room, int depth){
-      room.reachable = true;
-      room.depth = depth;
+      room.setReachable(true);
+      room.setDepth(depth);
       room.passages.forEach(e -> {if (!room.isBlocked()) traverseLabyrinth(e, depth + 1);});
    }
    

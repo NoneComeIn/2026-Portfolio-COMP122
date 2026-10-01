@@ -29,9 +29,27 @@ public class Chamber{
       public boolean isLeaf(){
          return passages.isEmpty();
       }
+      
+      
       public boolean getReachable(){
          return reachable;
       }
+      public int getDanger(){
+         return danger;
+      }
+      public int getDepth(){
+         return depth;
+      }
+      
+      
+      public void setReachable(boolean reachable){
+         this.reachable = reachable;
+      }
+      public void setDepth(int depth){
+         this.depth = depth;
+      }
+      
+      
       public String toString(){
          return "".format(" is %sblocked and is %sreachable.%s", isBlocked() ? "" : "not ", reachable ? "" : "not ", isLeaf() ? " Contains a relic." : "");
       }
