@@ -67,4 +67,25 @@ public class Labyrinth{
          }
       }
    }
+   
+   
+   /** returns the relics of a labyrinth*/
+   public Relic[] getRelics(){
+      ArrayList<Chamber> visited = new ArrayList<Chamber>();
+      ArrayList<Chamber> rooms = new ArrayList<Chamber>();
+      ArrayList<Relic> relics = new ArrayList<Relic>();
+      rooms.add(entrance);
+      
+      for (int i = 0; !rooms.isEmpty(); i++){ 
+         Chamber room = rooms.get(0);
+         rooms.remove(0);
+         
+         if (!visited.contains(room)){ //only print each room once.
+            visited.add(room);
+            rooms.addAll(room.passages);
+            if (room.isLeaf()) relics.add(room.getRelic());
+         }
+      }
+      return relics.toArray(new Relic[0]);
+   }
 }
