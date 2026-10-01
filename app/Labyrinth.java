@@ -18,7 +18,7 @@ public class Labyrinth{
       entrance.passages.add(leaf);
    }
    
-   /** Traverses the labyrinth and updates which nodes are reachable.
+   /** Recursively raverses the labyrinth and updates which nodes are reachable.
    Breaks if the graph contains a cycle.*/
    private void updateReachable(){
       ArrayList<Chamber> rooms = new ArrayList<Chamber>();
