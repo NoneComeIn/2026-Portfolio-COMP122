@@ -1,7 +1,4 @@
 import java.util.ArrayList;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class Labyrinth{
    /** Labyrinth class made by Lincoln.*/
@@ -14,22 +11,12 @@ public class Labyrinth{
    }
    
    public Labyrinth(){
-      // FIX ME this hardcoded mini labyrinth is just for testing.
-      Chamber leaf = new Chamber("test item", "I found it in my shoe");
-      Chamber leafUnreach = new Chamber("The magic doom sword of destiny", "I mugged a protagonist");
-      
-      
-      Chamber node = new Chamber(200);
-      node.passages.add(leaf);
-      node.passages.add(leafUnreach);
-      entrance = new Chamber(30);
-      entrance.passages.add(node);
-      entrance.passages.add(leaf);
-      
+      entrance = LabyrinthIO.readLabyrinthFile("DemoLabyrinth.txt"); //The big labyrinth shown in the project file.
+//       entrance = LabyrinthIO.readLabyrinthFile("TestSave.txt");      //The little labyrinth I made for testing.
       updateReachable();
    }
    
-   /** Recursively raverses the labyrinth and updates which nodes are reachable.
+   /** Recursively traverses the labyrinth and updates which nodes are reachable.
    Breaks if the graph contains a cycle.*/
    private void updateReachable(){
       ArrayList<Chamber> rooms = new ArrayList<Chamber>();
@@ -53,39 +40,21 @@ public class Labyrinth{
    
    /** Displays the nodes of the labyrinth*/
    public void display(){
-      ArrayList<Chamber> visited = new ArrayList<Chamber>();
-      ArrayList<Chamber> rooms = new ArrayList<Chamber>();
-      rooms.add(entrance);
-      
-      for (int i = 0; !rooms.isEmpty(); i++){ 
-         Chamber room = rooms.get(0);
-         rooms.remove(0);
-         
-         if (!visited.contains(room)){ //only print each room once.
-            visited.add(room);
-            rooms.addAll(room.passages);
-            System.out.println("Room " + i+ room);
-         }
+      ArrayList<Chamber> rooms = LabyrinthIO.flatten(entrance);
+      for (int i = 0; i < rooms.size(); i++){
+         System.out.println("Room " + i+ rooms.get(i));
+         if (rooms.get(i).passages.isEmpty()) System.out.println(rooms.get(i).getRelic());
+         else for (Chamber c: rooms.get(i).passages) System.out.println("\t-Connected to " + rooms.indexOf(c));
       }
    }
    
    
    /** returns the relics of a labyrinth*/
    public Relic[] getRelics(){
-      ArrayList<Chamber> visited = new ArrayList<Chamber>();
-      ArrayList<Chamber> rooms = new ArrayList<Chamber>();
+      ArrayList<Chamber> rooms = LabyrinthIO.flatten(entrance);
       ArrayList<Relic> relics = new ArrayList<Relic>();
-      rooms.add(entrance);
-      
-      for (int i = 0; !rooms.isEmpty(); i++){ 
-         Chamber room = rooms.get(0);
-         rooms.remove(0);
-         
-         if (!visited.contains(room)){ //only print each room once.
-            visited.add(room);
-            rooms.addAll(room.passages);
-            if (room.isLeaf()) relics.add(room.getRelic());
-         }
+      for (Chamber room: rooms){ 
+         if (room.isLeaf()) relics.add(room.getRelic());
       }
       return relics.toArray(new Relic[0]);
    }

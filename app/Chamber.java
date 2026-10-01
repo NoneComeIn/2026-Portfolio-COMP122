@@ -17,6 +17,9 @@ public class Chamber{
       public Chamber(String relicName, String relicOrigin){
          this.relic = new Relic(relicName, relicOrigin, this);
       }
+      public Chamber(String[] args){
+         this(args[0], args[1]);
+      }
       
       
       public boolean isBlocked(){
@@ -50,6 +53,6 @@ public class Chamber{
       
       
       public String toString(){
-         return "".format(" is %sblocked and is %sreachable.%s", isBlocked() ? "" : "not ", reachable ? "" : "not ", isLeaf() ? " Contains a relic." : "");
+         return "".format(" is %sblocked and is %sreachable.", isBlocked() ? "" : "not ", reachable ? "" : "not ");
       }
    }

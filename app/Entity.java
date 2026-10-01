@@ -3,7 +3,7 @@ public abstract class Entity
    /**
       Created and managed by Reid Penwarden. Parent class to Mercenary and Treasure.
    */
-   private String name;
+   protected String name;
    
    public Entity(String name)
    {
@@ -18,6 +18,11 @@ public abstract class Entity
    */ 
    //FIX ME - Implement everywhere!
    
+   
+   public String getName(){//Lincoln wuz here
+      return name;
+   }
+      
    
    public String toString(String name, String origin)
    {

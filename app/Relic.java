@@ -17,4 +17,7 @@ public class Relic extends Treasure
          return 10000;
       }
    }
+   public String toString(){//This method is property of Lincoln
+      return "".format("\tContains a $%d Relic: %s\n\t\t\"%s\"", calcValue(), name, origin);
+   }
 }
