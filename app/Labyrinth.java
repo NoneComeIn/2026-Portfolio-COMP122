@@ -15,8 +15,6 @@ public class Labyrinth{
       Chamber leaf = new Chamber("test item", "I found it in my shoe");
       Chamber leafUnreach = new Chamber("The magic doom sword of destiny", "I mugged a protagonist");
       
-      Chamber leafUnreach1 = new Chamber("The magic doom sword of destiny", "I mugged a protagonist");
-
       
       Chamber node = new Chamber(200);
       node.passages.add(leaf);
