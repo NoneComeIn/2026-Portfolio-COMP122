@@ -40,6 +40,9 @@ public class Chamber{
       public int getDepth(){
          return depth;
       }
+      public Relic getRelic(){
+         return relic;
+      }
       
       
       public void setReachable(boolean reachable){
