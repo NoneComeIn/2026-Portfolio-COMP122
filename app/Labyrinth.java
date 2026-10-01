@@ -12,8 +12,12 @@ public class Labyrinth{
    
    public Labyrinth(){
       // FIX ME this hardcoded mini labyrinth is just for testing.
-      Chamber leaf = new Chamber(new Relic("test item", "I found it in my shoe"));
-      Chamber leafUnreach = new Chamber(new Relic("The magic doom sword of destiny", "I mugged a protagonist"));
+      Chamber leaf = new Chamber("test item", "I found it in my shoe");
+      Chamber leafUnreach = new Chamber("The magic doom sword of destiny", "I mugged a protagonist");
+      
+      Chamber leafUnreach1 = new Chamber("The magic doom sword of destiny", "I mugged a protagonist");
+
+      
       Chamber node = new Chamber(200);
       node.passages.add(leaf);
       node.passages.add(leafUnreach);
@@ -85,8 +89,8 @@ public class Labyrinth{
       public Chamber(int danger){
          this.danger = danger;
       }
-      public Chamber(Relic relic){
-         this.relic = relic;
+      public Chamber(String relicName, String relicOrigin){
+         this.relic = new Relic(relicName, relicOrigin, this);
       }
       
       
@@ -95,6 +99,9 @@ public class Labyrinth{
       }
       public boolean isLeaf(){
          return passages.isEmpty();
+      }
+      public boolean getReachable(){
+         return reachable;
       }
       public String toString(){
          return "".format(" is %sblocked and is %sreachable.%s", isBlocked() ? "" : "not ", reachable ? "" : "not ", isLeaf() ? " Contains a relic." : "");
