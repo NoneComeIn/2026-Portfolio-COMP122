@@ -14,7 +14,6 @@ public abstract class Entity
    /*
    public abstract String getAtributes();
    public abstract String getName();
-   public abstract int getValue();
    public abstract int getThreat();
    public abstract String getAction();
    public abstract String getType();
@@ -26,5 +25,6 @@ public abstract class Entity
    {
       return name + origin;
    }
+   public abstract double calcValue();
  
 }
