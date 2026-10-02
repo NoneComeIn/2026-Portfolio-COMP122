@@ -1,4 +1,4 @@
-public class DragonAPP
+public class DragonApp
 {
    public static void main(String[] args)
    {
