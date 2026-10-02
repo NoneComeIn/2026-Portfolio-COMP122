@@ -1,23 +1,27 @@
 11
-0 false 10
-1 false 40
-2 false 30
-3 false 110
-4 false 120
-5 false 80
-6 false 160
-7 true Penis Rock|The shape of this rock arouses suspiscion.
-8 true The Magic Doom Sword of Destiny (TMDSoD)|I mugged a protagonist.
-9 false 90
-10 true Donald Trump|Oh, so that's where this thing got to...
-A 1 2 3
-B 4 5
-C 6
-D 7
-F 8
-G 2 8
-E 9
-R2 
-R1 
-H 7 8 10
-R3 
+false A 10
+false B 40
+false C 30
+false D 110
+false F 120
+false G 80
+false E 160
+true R2 Penis Rock|The shape of this rock arouses suspiscion.
+true R1 The Magic Doom Sword of Destiny (TMDSoD)|I mugged a protagonist.
+false H 90
+true R3 Donald Trump|Oh, so that's where this thing got to...
+1 2 3  
+4 5  
+6  
+7  
+8  
+2 8  
+9  
+ 
+ 
+7 8 10  
+ 
+### FILE STRUCTURE ###
+Part 1: # of nodes in labyrinth.
+Part 2: isLeafNode nodeName (danger OR relicName|relicOrigin)
+part 3: List of nodes connected to nth Chamber. Lines corresponding to leaves/relics must have a space (' ').

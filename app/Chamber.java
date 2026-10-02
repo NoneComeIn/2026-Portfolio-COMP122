@@ -16,7 +16,8 @@ public class Chamber implements ChamberI{
    
    
    /** Main constructor*/
-   public Chamber(int danger){
+   public Chamber(String name, int danger){
+      this.name = name;
       this.danger = danger;
    }
    
@@ -61,11 +62,6 @@ public class Chamber implements ChamberI{
    public void setPath(Path path){
       this.path = path;
    }
-   //FIX ME This does not need to exist. Change the save file format to remove indices in part one and replace them with node names. Take node names out of part two.
-   /** I have no excuse. This method shouldn't exist*/
-   public void setRoomName(String name){
-      this.name = name;
-   }
    
    
    //toString() variants
@@ -94,6 +90,6 @@ public class Chamber implements ChamberI{
    /** Returns the information of this node as a string formatted for a save file
    @return A save compatible string representation of the relic.*/
    public String toSaveString(){
-      return "true " + danger;
+      return "".format("false %s %d", name, danger);
    }
 }

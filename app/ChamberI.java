@@ -7,6 +7,5 @@ public interface ChamberI{
    String getPath();
    boolean getReachable();
    String toSaveString();
-   void setRoomName(String name);
    String getRoomName();
 }

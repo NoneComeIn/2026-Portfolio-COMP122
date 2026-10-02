@@ -12,12 +12,13 @@ public class Relic extends Treasure implements ChamberI{
    // Constructors
    
    /** Main constructor*/
-   public Relic(String name, String origin){
+   public Relic(String roomName, String name, String origin){
       super(name, origin);
+      this.roomName = roomName;
    }
    /** This constructor is to make loading from a file easier. Calls main constructor.*/
-   public Relic(String[] args){
-      this(args[0].strip(), args[1]);
+   public Relic(String roomName, String[] args){
+      this(roomName, args[0].strip(), args[1]);
    }
    
    
@@ -64,7 +65,7 @@ public class Relic extends Treasure implements ChamberI{
    /** Returns the *treasure* related information of this node as a formatted string
    @return A string representation of the relic.*/
    public String getRelic(){
-      return "".format("\t$%d relic:\n\t\t%s\n\t\t\"%s\"", getValue(), name, origin);
+      return "".format("$%d relic:\n\t\t%s\n\t\t\"%s\"", getValue(), name, origin);
    }
    /** Returns the *labyrinth* related information of this node as a formatted string
    @return A string representation of the relic.*/
@@ -74,6 +75,6 @@ public class Relic extends Treasure implements ChamberI{
    /** Returns the information of this node as a string formatted for a save file
    @return A save compatible string representation of the relic.*/
    public String toSaveString(){
-      return "".format("false %s|%s", name, origin);
+      return "".format("true %s %s|%s", roomName, name, origin);
    }
 }

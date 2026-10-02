@@ -8,12 +8,13 @@ public class Labyrinth{
    public static void main(String[] args){
       //FIX ME this is jsut for debug. Remove from final.
       Labyrinth tester = new Labyrinth();
+      LabyrinthIO.saveFile("TestSave2.txt", tester.flatten());
       tester.display();
    }
    
    public Labyrinth(){
-      entrance = LabyrinthIO.readLabyrinthFile("DemoLabyrinth.txt"); //The big labyrinth shown in the project file.
-//       entrance = LabyrinthIO.readLabyrinthFile("TestSave.txt");      //The little labyrinth I made for testing.
+      entrance = LabyrinthIO.readFile("DemoLabyrinth.txt"); //The big labyrinth shown in the project file.
+//       entrance = LabyrinthIO.readFile("TestSave.txt");      //The little labyrinth I made for testing.
       updateReachable();
    }
    
@@ -23,14 +24,18 @@ public class Labyrinth{
       for (ChamberI room: flatten()){
          room.setPath(null);
       }
-      traverseLabyrinth(entrance, new Path(-1, new ArrayList<String>()));
+      traverseLabyrinth(0, entrance, new Path(-1, new ArrayList<String>()));
    }
-   private void traverseLabyrinth(ChamberI room, Path pathSoFar){
+   private void traverseLabyrinth(int depth, ChamberI room, Path pathSoFar){
+      if (depth > 10) {
+         System.out.println("Error too much recursion");
+         return;
+      }
       if (pathSoFar.isOpen() || (!pathSoFar.isOpen() && !room.getReachable())) 
          room.setPath(pathSoFar);
       if (room instanceof Chamber) 
          for (ChamberI nextRoom: ((Chamber)room).getPassages()) 
-            traverseLabyrinth(nextRoom, pathSoFar.addStep(room.getRoomName(), ((Chamber)room).getDanger()));
+            traverseLabyrinth(depth + 1, nextRoom, pathSoFar.addStep(room.getRoomName(), ((Chamber)room).getDanger()));
    }
    
    
@@ -60,10 +65,10 @@ public class Labyrinth{
          System.out.println(room);
          System.out.println(room.getPath());
          if (room instanceof Relic) 
-            System.out.println("Contains a" + ((Relic)room).getRelic());
+            System.out.println("\tContains a " + ((Relic)room).getRelic());
          else {
-            System.out.println("\tDanger: " + ((Chamber)room).getDanger());
             System.out.println(((Chamber)room).getPassagesAsString());
+            System.out.println("\tDanger: " + ((Chamber)room).getDanger());
          }
          System.out.println();
       }
