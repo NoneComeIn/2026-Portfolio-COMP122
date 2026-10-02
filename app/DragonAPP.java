@@ -18,7 +18,7 @@ public class DragonApp
       }
       for(Relic relic : relics)
       {
-         System.out.println(relic.calcValue());
+         System.out.println(relic.getValue());
       }
    }
 }

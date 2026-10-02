@@ -60,7 +60,7 @@ public class Labyrinth{
          System.out.println(room);
          System.out.println(room.getPath());
          if (room instanceof Relic) 
-            System.out.println(((Relic)room).getRelic());
+            System.out.println("Contains a" + ((Relic)room).getRelic());
          else {
             System.out.println("\tDanger: " + ((Chamber)room).getDanger());
             System.out.println(((Chamber)room).getPassagesAsString());

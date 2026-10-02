@@ -19,9 +19,6 @@ public class Chamber implements ChamberI{
    public boolean isBlocked(){
       return danger > 100;
    }
-   public boolean isLeaf(){
-      return false;
-   }
    
    
    public boolean getReachable(){
