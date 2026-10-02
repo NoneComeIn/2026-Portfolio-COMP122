@@ -2,8 +2,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.function.Supplier;
 
+/** Stores one labyrinth. Because the labyrinth structure is a directed graph, the terms node/chamber/room and root/entrance/first are used interchangeably in comments and variable names.
+Eww, have I split off so much functionality that this is a data class now??
+@author Lincoln*/
 public class Labyrinth{
-   /** Labyrinth class made by Lincoln.*/
+   
+   /** A reference to the root/entrance node of the labyrinth*/
    private ChamberI entrance;
    
    
@@ -35,7 +39,7 @@ public class Labyrinth{
    }
    
    
-   /** Displays the nodes of the labyrinth*/
+   /** Prints the nodes of the labyrinth to System.out*/
    public void display(){ //FIX ME Do I belong in the final app or just for debug?
       ArrayList<ChamberI> rooms = flatten();
       for (ChamberI room: rooms){
