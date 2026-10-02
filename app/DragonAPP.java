@@ -8,7 +8,7 @@ public class DragonApp
       new Gemstone("Lincolns Kidney Stone", "It just plopped out")
       };
       
-      Labyrinth tester = new Labyrinth();
+      Labyrinth tester = new Labyrinth("DemoLabyrinth.txt");
       tester.display();  //PENWARDEN!!! I made this display method SUPER BEEFY!!! Your little relic loop is STUPID in comparison.
       Relic[] relics = tester.getRelics();
       

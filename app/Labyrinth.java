@@ -1,45 +1,22 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.function.Supplier;
 
 public class Labyrinth{
    /** Labyrinth class made by Lincoln.*/
    private ChamberI entrance;
    
-   public static void main(String[] args){
-      //FIX ME this is jsut for debug. Remove from final.
-      Labyrinth tester = new Labyrinth();
-      LabyrinthIO.saveFile("TestSave2.txt", tester.flatten());
-      tester.display();
-   }
    
-   public Labyrinth(){
-      entrance = LabyrinthIO.readFile("DemoLabyrinth.txt"); //The big labyrinth shown in the project file.
-//       entrance = LabyrinthIO.readFile("TestSave.txt");      //The little labyrinth I made for testing.
-      updateReachable();
-   }
-   
-   /** Recursively traverses the labyrinth and updates which nodes are reachable.
-   Might break if the graph contains a cycle.*/
-   private void updateReachable(){
-      for (ChamberI room: flatten()){
-         room.setPath(null);
-      }
-      traverseLabyrinth(0, entrance, new Path(-1, new ArrayList<String>()));
-   }
-   private void traverseLabyrinth(int depth, ChamberI room, Path pathSoFar){
-      if (depth > 10) {
-         System.out.println("Error too much recursion");
-         return;
-      }
-      if (pathSoFar.isOpen() || (!pathSoFar.isOpen() && !room.getReachable())) 
-         room.setPath(pathSoFar);
-      if (room instanceof Chamber) 
-         for (ChamberI nextRoom: ((Chamber)room).getPassages()) 
-            traverseLabyrinth(depth + 1, nextRoom, pathSoFar.addStep(room.getRoomName(), ((Chamber)room).getDanger()));
+   /** Main constructor. Reads in a labyrinth from file then calls recursion to calculate reachable rooms.
+   @param filename where to load the labyrinth from.*/
+   public Labyrinth(String filename){
+      entrance = LabyrinthIO.readFile(filename); //read in the saved labyrinth
+      LabyrinthRecursion.updateReachableRooms(flatten()); //Call the recursion class to calculate which rooms are reachable.
    }
    
    
-   /** Put all roooms into a 1D ArrayList useful for iterating through*/
+   /** Small helper method that puts all roooms into a 1D ArrayList. Useful when needing to iterating through nodes.
+   @return an arraylist of all the nodes in the labyrinth once each*/
    private ArrayList<ChamberI> flatten(){
       ArrayList<ChamberI> toVisit = new ArrayList<ChamberI>();
       ArrayList<ChamberI> visited = new ArrayList<ChamberI>();
@@ -59,7 +36,7 @@ public class Labyrinth{
    
    
    /** Displays the nodes of the labyrinth*/
-   public void display(){
+   public void display(){ //FIX ME Do I belong in the final app or just for debug?
       ArrayList<ChamberI> rooms = flatten();
       for (ChamberI room: rooms){
          System.out.println(room);
@@ -75,7 +52,8 @@ public class Labyrinth{
    }
    
    
-   /** returns the relics (leaf nodes) of the labyrinth*/
+   /** returns all the relics (leaf nodes) in the labyrinth
+   @return Relic[] with each relic once.*/
    public Relic[] getRelics(){
       ArrayList<Relic> relics = new ArrayList<Relic>();
       for (ChamberI room: flatten()) if (room instanceof Relic) 
