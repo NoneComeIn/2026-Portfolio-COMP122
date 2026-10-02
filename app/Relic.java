@@ -47,7 +47,7 @@ public class Relic extends Treasure implements ChamberI{
    public boolean getReachable(){
       return path != null && path.isOpen();
    }
-   /** Returns the name of the room
+   /** Returns the name of the labyrinth node, NOT the name of the relic.
    @return roomName*/
    public String getRoomName(){
       return roomName;
