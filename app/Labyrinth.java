@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Labyrinth{
    /** Labyrinth class made by Lincoln.*/
-   private Chamber entrance;
+   private ChamberI entrance;
    
    public static void main(String[] args){
       //FIX ME this is jsut for debug. Remove from final.
@@ -12,50 +13,68 @@ public class Labyrinth{
    
    public Labyrinth(){
       entrance = LabyrinthIO.readLabyrinthFile("DemoLabyrinth.txt"); //The big labyrinth shown in the project file.
+      System.out.println("Done reading");
 //       entrance = LabyrinthIO.readLabyrinthFile("TestSave.txt");      //The little labyrinth I made for testing.
       updateReachable();
    }
    
    /** Recursively traverses the labyrinth and updates which nodes are reachable.
-   Breaks if the graph contains a cycle.*/
+   Might break if the graph contains a cycle.*/
    private void updateReachable(){
-      ArrayList<Chamber> rooms = new ArrayList<Chamber>();
-      rooms.add(entrance);
-      
-      while (!rooms.isEmpty()){ 
-         Chamber room = rooms.get(0);
-         rooms.remove(0);
-         rooms.addAll(room.passages);
-         
+      for (ChamberI room: flatten()){
          room.setReachable(false);
       }
+      System.out.println("Set all unreach");
       traverseLabyrinth(entrance, 0);
    }
-   private void traverseLabyrinth(Chamber room, int depth){
+   private void traverseLabyrinth(ChamberI room, int depth){
+      if (depth < 10 && room instanceof Chamber && !((Chamber)room).isBlocked()) 
+         for (ChamberI e: ((Chamber)room).getPassages()) 
+            traverseLabyrinth(e, depth + 1);
       room.setReachable(true);
-      room.setDepth(depth);
-      room.passages.forEach(e -> {if (!room.isBlocked()) traverseLabyrinth(e, depth + 1);});
+   }
+   
+   
+   /** Put all roooms into a 1D ArrayList useful for iterating through*/
+   private ArrayList<ChamberI> flatten(){
+      ArrayList<ChamberI> toVisit = new ArrayList<ChamberI>();
+      ArrayList<ChamberI> visited = new ArrayList<ChamberI>();
+      toVisit.add(entrance);
+      for (int i = 0; !toVisit.isEmpty(); i++){ 
+         ChamberI room = toVisit.get(0);
+         toVisit.remove(0);
+         
+         if (!visited.contains(room)){ //only save each room once.
+            visited.add(room);
+            if (room instanceof Chamber) 
+               Collections.addAll(toVisit, ((Chamber)room).getPassages());
+         }
+      }
+      return visited;
    }
    
    
    /** Displays the nodes of the labyrinth*/
    public void display(){
-      ArrayList<Chamber> rooms = LabyrinthIO.flatten(entrance);
+      ArrayList<ChamberI> rooms = flatten();
       for (int i = 0; i < rooms.size(); i++){
-         System.out.println("Room " + i+ rooms.get(i));
-         if (rooms.get(i).passages.isEmpty()) System.out.println(rooms.get(i).getRelic());
-         else for (Chamber c: rooms.get(i).passages) System.out.println("\t-Connected to " + rooms.indexOf(c));
+         
+         if (rooms.get(i) instanceof Relic) 
+            System.out.println("\nRoom " + (char)(i+65) + " contains a " + rooms.get(i));
+         else {
+            System.out.println("\nRoom " + (char)(i+65) + rooms.get(i));
+            for (ChamberI c: ((Chamber)rooms.get(i)).getPassages()) 
+               System.out.println("\tConnected to room " + (char)(rooms.indexOf(c)+65));
+         }
       }
    }
    
    
    /** returns the relics of a labyrinth*/
    public Relic[] getRelics(){
-      ArrayList<Chamber> rooms = LabyrinthIO.flatten(entrance);
       ArrayList<Relic> relics = new ArrayList<Relic>();
-      for (Chamber room: rooms){ 
-         if (room.isLeaf()) relics.add(room.getRelic());
-      }
+      for (ChamberI room: flatten()) if (room instanceof Relic) 
+         relics.add((Relic)room);
       return relics.toArray(new Relic[0]);
    }
 }

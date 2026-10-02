@@ -11,7 +11,6 @@ public abstract class Entity
    }
    /*
    public abstract String getAtributes();
-   public abstract String getName();
    public abstract int getThreat();
    public abstract String getAction();
    public abstract String getType();
