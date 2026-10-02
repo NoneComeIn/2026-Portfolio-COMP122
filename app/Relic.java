@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-/** Relic is one of two treasure types, and is able to occupy a position in the labyrinth. It no longer has any relationship with the Chamber class.
+/** Relic is a hybrid class that is one of two treasure types, and is able to occupy a position in the labyrinth. It no longer has any relationship with the Chamber class.
 @author Lincoln*/
 public class Relic extends Treasure implements ChamberI{
    /**roomName Labels the relic's position in the labyrinth. Is distinct from [treasure] name.*/
