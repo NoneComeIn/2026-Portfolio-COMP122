@@ -1,8 +1,13 @@
 import java.util.ArrayList;
 
+/**
+@author Lincoln*/
 public interface ChamberI{
    boolean isLeaf();
-   void setReachable(boolean r);
+   void setPath(Path path);
+   String getPath();
    boolean getReachable();
-   public String toSaveString();
+   String toSaveString();
+   void setRoomName(String name);
+   String getRoomName();
 }

@@ -34,7 +34,7 @@ public class LabyrinthIO{
                labyrinth[i] = new Chamber(sc.nextInt());
          }
          for (int i = 0; i < labyrinth.length; i++){
-            if (i != sc.nextInt()) System.out.print("Error index is wrong is file reader loop 2");
+            labyrinth[i].setRoomName(sc.next());
             Scanner connections = new Scanner(sc.nextLine());
             if (labyrinth[i] instanceof Chamber) while (connections.hasNext())
                ((Chamber)labyrinth[i]).addConnection(labyrinth[connections.nextInt()]);

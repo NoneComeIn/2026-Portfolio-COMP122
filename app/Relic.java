@@ -3,8 +3,8 @@ import java.util.ArrayList;
 /**
 @author Lincoln*/
 public class Relic extends Treasure implements ChamberI{
-   private boolean reachable;
-   private ArrayList<Character> path;
+   private String roomName;
+   private Path path;
    
    
    public Relic(String name, String origin){
@@ -19,20 +19,34 @@ public class Relic extends Treasure implements ChamberI{
       return true;
    }
    public int calcValue(){
-      return reachable ? 250 : 10000;
+      return getReachable() ? 250 : 10000;
    }
    
-   public void setReachable(boolean reachable){
-      this.reachable = reachable;
+   
+   public void setPath(Path path){
+      this.path = path;
+   }
+   public void setRoomName(String name){
+      this.roomName = name;
    }
    
 
    public boolean getReachable(){
-      return reachable;
+      return path != null && path.isOpen();
    }
+   public String getRoomName(){
+      return roomName;
+   }
+   public String getPath(){
+      return "".format("\tPath: %s%s\n\t\t%s", path, roomName, path.getStats()); 
+   }
+   public String getRelic(){
+      return "".format("\t$%d relic:\n\t\t%s\n\t\t\"%s\"", calcValue(), name, origin);
+   }
+
    
    public String toString(){
-      return "".format("$%d Relic: \n\t%s\n\t\"%s\"", calcValue(), name, origin); //is only called in Labyrinth.display() rn. Might need to be changed if used elsewhere.
+      return "".format("Room %s is a%sreachable chamber: ", roomName, getReachable() ? " " : "n un");
    }
    public String toSaveString(){
       return "".format("false %s|%s", name, origin);

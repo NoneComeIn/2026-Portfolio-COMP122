@@ -13,7 +13,6 @@ public class Labyrinth{
    
    public Labyrinth(){
       entrance = LabyrinthIO.readLabyrinthFile("DemoLabyrinth.txt"); //The big labyrinth shown in the project file.
-      System.out.println("Done reading");
 //       entrance = LabyrinthIO.readLabyrinthFile("TestSave.txt");      //The little labyrinth I made for testing.
       updateReachable();
    }
@@ -22,16 +21,16 @@ public class Labyrinth{
    Might break if the graph contains a cycle.*/
    private void updateReachable(){
       for (ChamberI room: flatten()){
-         room.setReachable(false);
+         room.setPath(null);
       }
-      System.out.println("Set all unreach");
-      traverseLabyrinth(entrance, 0);
+      traverseLabyrinth(entrance, new Path(-1, new ArrayList<String>()));
    }
-   private void traverseLabyrinth(ChamberI room, int depth){
-      if (depth < 10 && room instanceof Chamber && !((Chamber)room).isBlocked()) 
-         for (ChamberI e: ((Chamber)room).getPassages()) 
-            traverseLabyrinth(e, depth + 1);
-      room.setReachable(true);
+   private void traverseLabyrinth(ChamberI room, Path pathSoFar){
+      if (pathSoFar.isOpen() || (!pathSoFar.isOpen() && !room.getReachable())) 
+         room.setPath(pathSoFar);
+      if (room instanceof Chamber) 
+         for (ChamberI nextRoom: ((Chamber)room).getPassages()) 
+            traverseLabyrinth(nextRoom, pathSoFar.addStep(room.getRoomName(), ((Chamber)room).getDanger()));
    }
    
    
@@ -57,20 +56,21 @@ public class Labyrinth{
    /** Displays the nodes of the labyrinth*/
    public void display(){
       ArrayList<ChamberI> rooms = flatten();
-      for (int i = 0; i < rooms.size(); i++){
-         
-         if (rooms.get(i) instanceof Relic) 
-            System.out.println("\nRoom " + (char)(i+65) + " contains a " + rooms.get(i));
+      for (ChamberI room: rooms){
+         System.out.println(room);
+         System.out.println(room.getPath());
+         if (room instanceof Relic) 
+            System.out.println(((Relic)room).getRelic());
          else {
-            System.out.println("\nRoom " + (char)(i+65) + rooms.get(i));
-            for (ChamberI c: ((Chamber)rooms.get(i)).getPassages()) 
-               System.out.println("\tConnected to room " + (char)(rooms.indexOf(c)+65));
+            System.out.println("\tDanger: " + ((Chamber)room).getDanger());
+            System.out.println(((Chamber)room).getPassagesAsString());
          }
+         System.out.println();
       }
    }
    
    
-   /** returns the relics of a labyrinth*/
+   /** returns the relics (leaf nodes) of the labyrinth*/
    public Relic[] getRelics(){
       ArrayList<Relic> relics = new ArrayList<Relic>();
       for (ChamberI room: flatten()) if (room instanceof Relic) 

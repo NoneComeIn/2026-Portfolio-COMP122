@@ -10,14 +10,14 @@
 8 true The Magic Doom Sword of Destiny (TMDSoD)|I mugged a protagonist.
 9 false 90
 10 true Donald Trump|Oh, so that's where this thing got to...
-0 1 2 3
-1 4 5
-2 6
-3 7
-4 8
-5 2 8
-6 9
-7 
-8 
-9 7 8 10
-10 
+A 1 2 3
+B 4 5
+C 6
+D 7
+F 8
+G 2 8
+E 9
+R2 
+R1 
+H 7 8 10
+R3 
