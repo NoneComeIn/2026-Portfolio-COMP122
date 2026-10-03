@@ -5,7 +5,6 @@ To do:
 >    *Make a stack of mercenaries
 >    *Add a system to dismiss any extra mercenaries.
 > -Make a list of treasures and sort them by value
-> -Generate the **Lair Hoard & Security Evaluation Summary** output table
 > -Organise the files in folders.
 > -Split Relic in two:
 >    *Make a base Chamber class and then have a DangerousChamber and RelicChamber inherit from it. 
