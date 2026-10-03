@@ -1,24 +1,42 @@
+import java.util.ArrayList;
+
+/** Application class. Mostly for testing atm. 
+@author Lincoln
+@author Penwarden*/
 public class DragonApp
 {
    public static void main(String[] args)
    {
-      /** Mostly for testing atm. Not tracking who does what*/
-      Treasure[] treasures = {
-      new Gemstone("Reid's Ruby", "Not affiliated to his ex"), 
-      new Gemstone("Lincolns Kidney Stone", "It just plopped out")
+      Labyrinth labyrinth = new Labyrinth("TestSave.txt");
+      labyrinth.display();
+      
+      ArrayList<Entity> hoard = new ArrayList<Entity>();
+      
+      Gemstone[] gems = {
+         new Gemstone("Reid's Ruby", "No relation to his ex"), 
+         new Gemstone("Flawless Emerald", "It just popped out"),
+      };
+      Mercenary[] mercs = {
+         new Mercenary("Iron Golem Legion", 10, 25),
+         new Mercenary("Wyrmguard Vanguard", 10, 25),
       };
       
-      Labyrinth tester = new Labyrinth("DemoLabyrinth.txt");
-      tester.display();  //PENWARDEN!!! I made this display method SUPER BEEFY!!! Your little relic loop is STUPID in comparison.
-      Relic[] relics = tester.getRelics();
+      for (Gemstone g: gems) hoard.add(g);
+      for (Relic r: labyrinth.getRelics()) hoard.add(r);
+      for (Mercenary m: mercs) hoard.add(m);
       
-      for(Treasure treasure : treasures)
-      {
-         System.out.println(treasure.calcValue());
-      }
-      for(Relic relic : relics)
-      {
-         System.out.println(relic.getValue());
+      summarise(hoard);
+   }
+   
+   
+   public static void summarise(ArrayList<Entity> hoard){
+      System.out.println("                                LAIR HOARD & SECURITY EVALUATION SUMMARY");
+      System.out.println("|----------------------------------------------------------------------------------------------------------|");
+      for(Entity e: hoard) {
+         System.out.println("".format("| %-9s | %-20s | %-30s | %-6s | %-7s | %-17s |", "", "", e.getAttribute1(), "", "", ""));
+         System.out.println("".format("| %-9s | %-20s | %-30s | %-6s | %-7s | %-17s |", e.getType(), e.getName(), e.getAttribute2(), e.getValueString(), e.getThreatString(), e.getAction()));
+         System.out.println("".format("| %-9s | %-20s | %-30s | %-6s | %-7s | %-17s |", "", "", e.getAttribute3(), "", "", ""));
+         System.out.println("|----------------------------------------------------------------------------------------------------------|");
       }
    }
 }

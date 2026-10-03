@@ -26,12 +26,9 @@ class LabyrinthRecursion{
       if (pathSoFar.isOpen() || (!pathSoFar.isOpen() && !room.getReachable())) {
          room.setPath(pathSoFar);  //This instance of path does not get passed down. Is safe to assign.
       }
-      if (maxRecursionDepth < 0) { //Check nothing has gone horribly wrong. Shouldn't trigger.
-         System.out.println("Error too much recursion");
-      }
-      else if (room instanceof Chamber) { //If this node connects to others --> call on each new node.
+      if (room instanceof Chamber) { //If this node connects to others --> call on each new node.
          for (ChamberI nextRoom: ((Chamber)room).getPassages()) {
-            traverseLabyrinth(maxRecursionDepth - 1, nextRoom, pathSoFar.addStep(room.getRoomName(), ((Chamber)room).getDanger()));
+            traverseLabyrinth(maxRecursionDepth - 1, nextRoom, pathSoFar.addStep(room.getRoomName(), ((Chamber)room).getDanger())); //pathSoFar.addStep() returns a modified copy of pathSoFar.
          }
       }
    }

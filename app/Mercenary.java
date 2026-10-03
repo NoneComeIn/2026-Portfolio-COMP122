@@ -1,15 +1,40 @@
+
+
+/** A data class that represents mercenaries guarding the dragon's hoard
+@author Penwarden
+@author Lincoln*/
 public class Mercenary extends Entity
 {
-   private int noOGuards;
+   private int numGuards;
    private int dailyRate;
    public Mercenary(String name, int noOGuards, int dailyRate)
    {
       super(name);
       this.dailyRate = dailyRate;
-      this.noOGuards = noOGuards;
+      this.numGuards = noOGuards;
    }
-   public int calcValue()
+   public int getValue()
    {
-      return noOGuards + dailyRate * 30;
+      return (numGuards + dailyRate) * 30;
+   }
+   //Lincoln did this
+   @Override
+   public int getThreat() {
+      return 0;
+   }
+   //Lincoln did this
+   @Override
+   public String getType(){
+      return "Mercenary";
+   }
+   //Lincoln did this
+   @Override
+   public String getAttribute1(){
+      return "".format("Guard count: ", numGuards);
+   }
+   //Lincoln did this
+   @Override
+   public String getAttribute2(){
+      return "".format("Daily Rate:", dailyRate);
    }
 }

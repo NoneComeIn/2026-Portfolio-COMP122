@@ -45,8 +45,8 @@ class Path{
       newPath.add(name);
       return new Path(blockedNode, maxDanger, newPath); //IMPORTANT: returns a new path. Does NOT modify in place.
    }
-   
-   
+
+
    // Getters
    
    /** returns whether the path contains a blocked node or can can be safely traversed by adventurers.

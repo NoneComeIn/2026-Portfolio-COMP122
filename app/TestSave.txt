@@ -1,8 +1,8 @@
 4
 false A 30
 false B 200
-true C test item|Legend has it that it was found in a nearby shoe.
-true D The Magic Doom Sword of Destiny (TMDSoD)|I mugged a protagonist.
+true C Unreachable Relic|Legend has it that it was found in a nearby shoe.
+true D Reachable Relic|I mugged a protagonist.
 1 2 
 2 3 
  

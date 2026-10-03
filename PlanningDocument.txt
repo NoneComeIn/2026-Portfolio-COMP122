@@ -1,11 +1,15 @@
 This is the planning document for task 2 The Dragons Den by Reid Penwarden and Lincoln Rimmer:
 
 To do:
-> -Fully implement Mercenary
-> -Make a stack of mercenaries
-> -Add a system to dismiss any extra mercenaries.
+> -Fully implement Mercenary:
+>    *Make a stack of mercenaries
+>    *Add a system to dismiss any extra mercenaries.
 > -Make a list of treasures and sort them by value
 > -Generate the **Lair Hoard & Security Evaluation Summary** output table
+> -Organise the files in folders.
+> -Split Relic in two:
+>    *Make a base Chamber class and then have a DangerousChamber and RelicChamber inherit from it. 
+>    *Split Relic into Relic and RelicChamber. 
 > -Add a bunch of software tests. Generating the **Sample Software Testing Table** is the bare minimum
 > -Talk about design decisions so either one of us can explain any/most of them.
 

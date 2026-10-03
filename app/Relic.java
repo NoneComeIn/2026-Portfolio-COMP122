@@ -40,6 +40,7 @@ public class Relic extends Treasure implements ChamberI{
    
    /** Calculates the value of the relic by whether it is reachable in the maze.
    @return Value of the relic*/
+   @Override
    public int getValue(){
       return getReachable() ? 250 : 10000;
    }
@@ -53,6 +54,24 @@ public class Relic extends Treasure implements ChamberI{
    public String getRoomName(){
       return roomName;
    }
+   /** Returns the type of the object as a string
+   @return "Gemstone"*/
+   @Override
+   public String getType(){
+      return "Relic";
+   }
+   /** Returns the path to here as a string
+   @return the full representation of the path here.*/
+   @Override
+   public String getAttribute1(){
+      return "".format("Path: %s%s", path, roomName);
+   }
+   /** Returns secondary path info
+   @return the max danger whether there is a blocked of on the path here*/
+   @Override
+   public String getAttribute2(){
+      return path.getStats();
+   }
    
    
    //toString variants
@@ -60,7 +79,7 @@ public class Relic extends Treasure implements ChamberI{
    /** Returns the path to this node as a formatted string. Also exists to enforce encapsulation.
    @return A string representation of the stored path.*/
    public String getPath(){
-      return "".format("\tPath: %s%s\n\t\t%s", path, roomName, path.getStats()); 
+      return "".format("\t%s\n\t\t%s", getAttribute1(), getAttribute2()); 
    }
    /** Returns the *treasure* related information of this node as a formatted string
    @return A string representation of the relic.*/
