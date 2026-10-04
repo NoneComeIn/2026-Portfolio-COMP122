@@ -5,7 +5,7 @@ import java.lang.StringBuilder;
 @author Lincoln*/
 public class Chamber{
    /** The danger level of this node in the labyrinth*/
-   private ChamberContent content;
+   private ChamberContentI content;
    /** The name of this node of the labyrinth*/
    private String name;
    /** passages A list of all connected rooms in the labyrinth. 
@@ -16,7 +16,7 @@ public class Chamber{
    
    
    /** Main constructor*/
-   public Chamber(String name, ChamberContent content){
+   public Chamber(String name, ChamberContentI content){
       this.name = name;
       this.content = content;
    }
@@ -39,11 +39,14 @@ public class Chamber{
    public String getRoomName(){
       return name;
    }
-   public ChamberContent getContent(){
+   public ChamberContentI getContent(){
       return content;
    }
    public String getPath(){
       return path.toString() + " --> " + name;
+   }
+   public String getPathStats(){
+      return path.getStats();
    }
    public boolean hasConnections(){
       return !passages.isEmpty();
@@ -65,7 +68,7 @@ public class Chamber{
    @param path the path object containing the route to relic from the entrance.*/
    public void setPath(Path path){
       this.path = path;
-      if (content instanceof Relic) ((Relic)content).setReachable(getReachable());
+      if (content instanceof Relic) ((Relic)content).setReachable(path);
    }
    
    

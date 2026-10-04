@@ -1,5 +1,5 @@
 
 
-interface ChamberContent{
+interface ChamberContentI{
    public String toSaveString();
 }

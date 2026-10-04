@@ -75,7 +75,7 @@ class Path{
    /** Returns a string with supplementary path data.
    @return Max danger and name of any blocked node.*/
    public String getStats(){
-      if (blockedNode == null) return "".format("Max Danger: %d (≤ 100)", maxDanger);
+      if (blockedNode == null) return "".format("Max Danger: %d (<= 100)", maxDanger);
       else return "".format("Blocked Node: %s (%d > 100)",  blockedNode, maxDanger);
    }
 }

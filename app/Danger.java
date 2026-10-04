@@ -1,6 +1,6 @@
 
 
-class Danger implements ChamberContent{
+class Danger implements ChamberContentI{
    /** The danger level of this node in the labyrinth*/
    private int danger;
    

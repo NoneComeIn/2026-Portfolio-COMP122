@@ -43,9 +43,12 @@ public class Labyrinth{
    public void display(){ //FIX ME Do I belong in the final app or just for debug?
       ArrayList<Chamber> rooms = flatten();
       for (Chamber room: rooms){
-         System.out.println(room + "(" + room.getPath() + "):");
-            if (room.hasConnections()) System.out.println(room.getPassagesAsString());
-            System.out.println(room.getContent());
+         System.out.println(room);
+         System.out.println("\tPath: " + room.getPath());
+         System.out.println("\t\t" +room.getPathStats());
+         if (room.hasConnections()) System.out.println(room.getPassagesAsString());
+         if (room.getContent() instanceof Danger) System.out.println(room.getContent());
+         if (room.getContent() instanceof Relic) System.out.println("Contains a" + room.getContent());
          System.out.println();
       }
    }

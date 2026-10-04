@@ -13,8 +13,10 @@ s#i0
 s#k0
 s#j0
 s#l0
-!215;g
+!258;g
 %\011Chamber.java
+%\011ChamberContentI.java
+%\011Danger.java
 %\011DragonApp.java
 %\011Entity.java
 %\011Gemstone.java
@@ -25,8 +27,10 @@ s#l0
 %\011Path.java
 %\011Relic.java
 %\011Treasure.java
-!215;f
+!258;f
 %\011Chamber.java
+%\011ChamberContentI.java
+%\011Danger.java
 %\011DragonApp.java
 %\011Entity.java
 %\011Gemstone.java

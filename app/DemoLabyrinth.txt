@@ -7,7 +7,7 @@ false F 120
 false G 80
 false E 160
 true R2 Penis Rock|The shape of this rock arouses suspiscion.
-true R1 The Magic Doom Sword of Destiny (TMDSoD)|I mugged a protagonist.
+true R1 TMDSoD|Full name: The Magic Doom Sword of Destiny. I mugged a protagonist for it.
 false H 90
 true R3 Donald Trump|Oh, so that's where this thing got to...
 1 2 3  

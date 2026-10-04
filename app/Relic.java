@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 /** Relic is a hybrid class that is one of two treasure types, and is able to occupy a position in the labyrinth. It no longer has any relationship with the Chamber class.
 @author Lincoln*/
-public class Relic extends Treasure implements ChamberContent{
+public class Relic extends Treasure implements ChamberContentI{
 
-   boolean reachable;
+   Path routeTo;
    
 
    // Constructors
@@ -23,8 +23,8 @@ public class Relic extends Treasure implements ChamberContent{
 
    /** roomName setter. roomName relates to labyrinth position and is distinct from (treasure) name.
    @param name the name of the relic's position in the labyrinth.*/
-   public void setReachable(boolean reachable){
-      this.reachable = reachable;
+   public void setReachable(Path path){
+      this.routeTo = path;
    }
    
    
@@ -34,13 +34,25 @@ public class Relic extends Treasure implements ChamberContent{
    @return Value of the relic*/
    @Override
    public int getValue(){
-      return reachable ? 250 : 10000;
+      return routeTo.isOpen() ? 250 : 10000;
    }
    /** Returns the type of the object as a string
    @return "Gemstone"*/
    @Override
    public String getType(){
       return "Relic";
+   }
+   /** Returns the path to here as a string
+   @return the full representation of the path here.*/
+   @Override
+   public String getAttribute1(){
+      return "".format("Path: %s", routeTo);
+   }
+   /** Returns secondary path info
+   @return the max danger whether there is a blocked of on the path here*/
+   @Override
+   public String getAttribute2(){
+      return routeTo.getStats();
    }
    
    
