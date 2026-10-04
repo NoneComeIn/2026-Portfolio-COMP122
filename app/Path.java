@@ -11,6 +11,8 @@ class Path{
    /** The list of nodes making up the path*/
    ArrayList<String> path;
    
+   boolean mutable = true;
+   
    
    // Constructors
    
@@ -26,24 +28,25 @@ class Path{
    }
    
    
-   //Mutator, I think?
+   //Mutators?
    
    /** Returns a modified deep copy of path. 
    @param name The name of the node to be added to the path. 
    @param danger The danger level of the node to be added to the path.
    @return modified deep copy of path*/
    public Path addStep(String name, int danger){ 
-      //Could take a ChamberI, but I wanted to avoid circular referencing for when I have to change java versions and rebuild everything again.
+      String newBlocked = blockedNode;
+      int newMax = maxDanger;
       if (isOpen() && danger > 100) {
-         blockedNode = name;
-         maxDanger = danger;
+         newBlocked = name;
+         newMax = danger;
       }
       else if (danger > maxDanger) {
-         maxDanger = danger;
+         newMax = danger;
       }
       ArrayList<String> newPath = new ArrayList<String>(path);
       newPath.add(name);
-      return new Path(blockedNode, maxDanger, newPath); //IMPORTANT: returns a new path. Does NOT modify in place.
+      return new Path(newBlocked, newMax, newPath); //IMPORTANT: returns a new path. Does NOT modify in place.
    }
 
 
@@ -61,12 +64,13 @@ class Path{
    /** Returns a string representation of the path.
    @return a string representation of the path*/
    public String toString(){
-      StringBuilder output = new StringBuilder();
-      for (String node: path){
-         output.append(node);
-         output.append(" --> ");
-      }
-      return output.toString();
+      return "".join(" --> ", path);
+//       StringBuilder output = new StringBuilder();
+//       for (String node: path){
+//          output.append(node);
+//          output.append(" --> ");
+//       }
+//       return output.toString();
    }
    /** Returns a string with supplementary path data.
    @return Max danger and name of any blocked node.*/

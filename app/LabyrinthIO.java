@@ -11,26 +11,19 @@ import java.io.FileNotFoundException;
 /** To avoid hardcoding messy values, this class reads labyrinths from a (mostly) human readable .txt file.
 @author Lincoln*/
 public class LabyrinthIO{
-
-   public static void main(String[] args){
-      readFile("DemoLabyrinth.txt");
-   }
-
-   
-   
    
    /** Reads a labyrinth from a (mostly) human readable .txt file.
    @param filename Looks for this file in the same directory
    @return Entrance This node is the entrance/root of the labyrinth.*/
-   public static ChamberI readFile(String filename){
+   public static Chamber readFile(String filename){
       try {
          Scanner sc = new Scanner(new File(filename));
-         ChamberI[] labyrinth = new ChamberI[sc.nextInt()];
+         Chamber[] labyrinth = new Chamber[sc.nextInt()];
          for (int i = 0; i < labyrinth.length; i++){
             if (sc.nextBoolean()) //is leaf node --> use the relic constructor
-               labyrinth[i] = new Relic(sc.next(), sc.nextLine().split("\\|"));
+               labyrinth[i] = new Chamber(sc.next(), new Relic(sc.nextLine().split("\\|")));
             else //is not leaf node --> use danger constructor
-               labyrinth[i] = new Chamber(sc.next(), sc.nextInt());
+               labyrinth[i] = new Chamber(sc.next(), new Danger(sc.nextInt()));
          }
          for (int i = 0; i < labyrinth.length; i++){
             Scanner connections = new Scanner(sc.nextLine().strip());
@@ -48,7 +41,7 @@ public class LabyrinthIO{
    /** Saves a labyrinth into a (mostly) human readable .txt file to be used later. The root node is assigned index 0.
    @param filename Creates or overwrites the labyrinth in this file.
    @param entrance The root node of the labyrinth. Traverses from here through the graph.*/ 
-   public static void saveFile(String filename, ArrayList<ChamberI> rooms){
+   public static void saveFile(String filename, ArrayList<Chamber> rooms){
       //Wrap filewriter in a try catch
       try {
          BufferedWriter file = new BufferedWriter(new FileWriter(filename));
@@ -56,14 +49,14 @@ public class LabyrinthIO{
          file.newLine();
          //Save each room and whether it contains an artifact or danger
          for (int i = 0; i < rooms.size(); i++){
-            ChamberI room = rooms.get(i);
+            Chamber room = rooms.get(i);
             file.write(room.toSaveString());
             file.newLine();
          }
          //Save the connection list of each room. Using a second loops simplifies reading later.
          for (int i = 0; i < rooms.size(); i++){
-            ChamberI room = rooms.get(i);
-            if (rooms.get(i) instanceof Chamber) for (ChamberI connection: ((Chamber)room).getPassages()) 
+            Chamber room = rooms.get(i);
+            for (Chamber connection: room.getPassages()) 
                file.write(rooms.indexOf(connection) + " ");
             file.write(" ");
             file.newLine();

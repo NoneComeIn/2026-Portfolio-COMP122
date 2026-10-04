@@ -7,7 +7,7 @@ public class DragonApp
 {
    public static void main(String[] args)
    {
-      Labyrinth labyrinth = new Labyrinth("TestSave.txt");
+      Labyrinth labyrinth = new Labyrinth("DemoLabyrinth.txt");
       labyrinth.display();
       
       ArrayList<Entity> hoard = new ArrayList<Entity>();

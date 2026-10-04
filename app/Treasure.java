@@ -1,4 +1,4 @@
-public class Treasure extends Entity
+public abstract class Treasure extends Entity
 {
    /**
       Created and managed by Reid Penwarden - Parent class to all treasures, handles name and origin.

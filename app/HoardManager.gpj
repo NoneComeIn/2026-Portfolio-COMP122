@@ -1,5 +1,5 @@
 !1789;s
-A
+J
 SAU0JGRASP_MAIN_BOUNDS=%<CONTROL_SHELL_BOUNDS>\012PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning\012GCC_COLORS=\012-Run\012ADD_EXE_PATH==Y\012
 SCU0JGRASP_MAIN_BOUNDS=%<CONTROL_SHELL_BOUNDS>\012PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning\012GCC_COLORS=\012-Run\012ADD_EXE_PATH==Y\012
 S+U0JGRASP_MAIN_BOUNDS=%<CONTROL_SHELL_BOUNDS>\012PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning\012GCC_COLORS=\012-Run\012ADD_EXE_PATH==Y\012
@@ -13,9 +13,8 @@ s#i0
 s#k0
 s#j0
 s#l0
-!234;g
+!215;g
 %\011Chamber.java
-%\011ChamberI.java
 %\011DragonApp.java
 %\011Entity.java
 %\011Gemstone.java
@@ -26,9 +25,8 @@ s#l0
 %\011Path.java
 %\011Relic.java
 %\011Treasure.java
-!234;f
+!215;f
 %\011Chamber.java
-%\011ChamberI.java
 %\011DragonApp.java
 %\011Entity.java
 %\011Gemstone.java
