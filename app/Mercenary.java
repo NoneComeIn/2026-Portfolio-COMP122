@@ -15,7 +15,7 @@ public class Mercenary extends Entity
    }
    public int getValue()
    {
-      return (numGuards + dailyRate) * 30;
+      return numGuards * dailyRate * 30;
    }
    //Lincoln did this
    @Override
@@ -30,11 +30,11 @@ public class Mercenary extends Entity
    //Lincoln did this
    @Override
    public String getAttribute1(){
-      return "".format("Guard count: ", numGuards);
+      return "".format("Guard count: %d", numGuards);
    }
    //Lincoln did this
    @Override
    public String getAttribute2(){
-      return "".format("Daily Rate:", dailyRate);
+      return "".format("Daily Rate: %d", dailyRate);
    }
 }
