@@ -6,6 +6,34 @@ import java.util.Stack;
 @author Penwarden*/
 public class DragonAPP
 {
+   private Stack<Mercenary> mercenaryStack = new Stack<>();
+   public void deployMerc(Mercenary merc)
+   {
+      mercenaryStack.push(merc);
+      System.out.println("Deployed: " + merc.getName());
+   }
+   public Mercenary dismissMercenary()
+   {
+      if(mercenaryStack.isEmpty())
+      {
+         System.out.println("No mercenerys left to dismiss.");
+         return null;
+      }
+      Mercenary dismissed = mercenaryStack.pop();
+      System.out.println("Dismissed: " + dismissed.getName());
+      return dismissed;
+   }
+   public Mercenary lookAtTopMerc()
+   {
+      if(mercenaryStack.isEmpty())
+      {
+         return null;
+      }
+      else
+      {
+         return mercenaryStack.peek();
+      }
+   }
    public static void main(String[] args)
    {
       Labyrinth labyrinth = new Labyrinth("DemoLabyrinth.txt");
@@ -21,6 +49,9 @@ public class DragonAPP
          new Mercenary("Iron Golem Legion", 10, 25),
          new Mercenary("Wyrmguard Vanguard", 10, 25),
       };
+      
+      deployMercenary(mercs[1]);
+      deployMercenary(mercs[2]);
       
       for (Gemstone g: gems) hoard.add(g);
       for (Relic r: labyrinth.getRelics()) hoard.add(r);
