@@ -59,6 +59,7 @@ public class DragonAPP
       hoard.add(mercs[0]);
       hoard.add(mercs[1]);
       
+      hoard.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));
       summarise(hoard);
    }
    
