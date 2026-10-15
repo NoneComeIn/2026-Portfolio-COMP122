@@ -4,12 +4,22 @@ public class Gemstone extends Treasure
 {
    private int clarityScore;
    private double weight;
+   private int[] appraisals;
+   
    public Gemstone(String name, String origin)
    {
       super(name, origin);
+      
       Random random = new Random();
-      this.weight = (double)random.nextInt(26);
-      this.clarityScore = random.nextInt(11);
+      
+      this.weight = 0.5 + (double)random.nextInt(26); //Use 0.5 so it is never 0
+      
+      this.clarityScore = 1 + random.nextInt(10); //1 - 10
+      this.appraisals = new int[10];
+      for (int i = 0; i < 10; i++)
+      {
+         this.appraisals[i] = 10 + random.nextInt(291);
+      }
    }
    public int getValue()
    {
@@ -18,17 +28,12 @@ public class Gemstone extends Treasure
    }
    public int getAvgAppraisal()
    {
-      Random random2 = new Random();
-      int[] appraisalList = new int[10];
-      int sumAppraisals = 0;
-      for(int i = 0; i < 10; i++)
+      int total = 0;
+      for(int i : appraisals)
       {
-         int randAppraisal = random2.nextInt(11);
-         appraisalList[i] = randAppraisal;
-         sumAppraisals += randAppraisal;
+         total += i;
       }
-      return sumAppraisals / 10;
-
+      return total / appraisals.length;
    }
    //Lincoln did this
    @Override
