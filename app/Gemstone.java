@@ -43,16 +43,16 @@ public class Gemstone extends Treasure
    //Lincoln did this
    @Override
    public String getAttribute1(){
-      return "".format("Weight: %.1f carats", weight);
+      return String.format("Weight: %.1f carats", weight);
    }
    //Lincoln did this
    @Override
    public String getAttribute2(){
-      return "".format("Clarity: %d", clarityScore);
+      return String.format("Clarity: %d", clarityScore);
    }
    //Lincoln did this
    @Override
    public String getAttribute3() {
-      return "".format("Avg Appraisal: %d", getAvgAppraisal());
+      return String.format("Avg Appraisal: %d", getAvgAppraisal());
    }
 }

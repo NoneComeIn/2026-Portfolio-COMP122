@@ -30,11 +30,11 @@ public class Mercenary extends Entity
    //Lincoln did this
    @Override
    public String getAttribute1(){
-      return "".format("Guard count: %d", numGuards);
+      return String.format("Guard count: %d", numGuards);
    }
    //Lincoln did this
    @Override
    public String getAttribute2(){
-      return "".format("Daily Rate: %d", dailyRate);
+      return String.format("Daily Rate: %d", dailyRate);
    }
 }

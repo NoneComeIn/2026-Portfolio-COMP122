@@ -56,11 +56,28 @@ public class DragonAPP
       for (Gemstone g: gems) hoard.add(g);
       for (Relic r: labyrinth.getRelics()) hoard.add(r);
       for (Mercenary m: mercs) hoard.add(m);
-      hoard.add(mercs[0]);
-      hoard.add(mercs[1]);
       
       hoard.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));
       summarise(hoard);
+      showStack();
+   }
+   public static void showStack()
+   {
+      System.out.println("\nMercenary Stack Order");
+      if (mercenaryStack.isEmpty())
+      {
+         System.out.println("...empty...");
+         return;
+      }
+      Object[] arr = mercenaryStack.toArray();
+      for (int i = arr.length - 1; i >= 0; i--)
+      {
+         Mercenary m = (Mercenary) arr[i];
+         String pos = (i == arr.length - 1)
+            ? "Top"
+            : "Bottom";
+         System.out.println((arr.length -i) + ". " + pos + ". " + m.getName());
+      }
    }
    
    

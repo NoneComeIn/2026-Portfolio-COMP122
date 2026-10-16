@@ -46,7 +46,7 @@ public class Relic extends Treasure implements ChamberContentI{
    @return the full representation of the path here.*/
    @Override
    public String getAttribute1(){
-      return "".format("Path: %s", routeTo);
+      return String.format("Path: %s", routeTo);
    }
    /** Returns secondary path info
    @return the max danger whether there is a blocked of on the path here*/
@@ -61,11 +61,11 @@ public class Relic extends Treasure implements ChamberContentI{
    /** Returns the *treasure* related information of this node as a formatted string
    @return A string representation of the relic.*/
    public String toString(){
-      return "".format("\t$%d relic:\n\t\t%s\n\t\t\"%s\"", getValue(), name, origin);
+      return String.format("\t$%d relic:\n\t\t%s\n\t\t\"%s\"", getValue(), name, origin);
    }
    /** Returns the information of this node as a string formatted for a save file
    @return A save compatible string representation of the relic.*/
    public String toSaveString(){
-      return "".format("true \\%s %s|%s", name, origin);
+      return String.format("true \\%s %s|%s", name, origin);
    }
 }
