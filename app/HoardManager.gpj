@@ -13,10 +13,9 @@ s#i0
 s#k0
 s#j0
 s#l0
-!258;g
+!234;g
 %\011Chamber.java
-%\011ChamberContentI.java
-%\011Danger.java
+%\011ChamberI.java
 %\011DragonApp.java
 %\011Entity.java
 %\011Gemstone.java
@@ -27,10 +26,9 @@ s#l0
 %\011Path.java
 %\011Relic.java
 %\011Treasure.java
-!258;f
+!234;f
 %\011Chamber.java
-%\011ChamberContentI.java
-%\011Danger.java
+%\011ChamberI.java
 %\011DragonApp.java
 %\011Entity.java
 %\011Gemstone.java
@@ -41,3 +39,5 @@ s#l0
 %\011Path.java
 %\011Relic.java
 %\011Treasure.java
+!20;m
+RunSelect	DragonAPP

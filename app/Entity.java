@@ -29,9 +29,9 @@ public abstract class Entity
       else               return 5;
    }
    public String getThreatString(){
-      return "".format("Level %d", getThreat());
+      return String.format("Level %d", getThreat());
    }   public String getValueString(){
-      return "".format("%,d", getValue());
+      return String.format("%,d", getValue());
    }
    public String getAction(){
       return new String[]{"No Action","Log only","Watch status","Arm passive trap","Arm lethal traps","Full lair lockout"}[getThreat()];

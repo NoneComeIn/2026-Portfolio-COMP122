@@ -88,11 +88,11 @@ public class Chamber{
    /** Returns the labyrinth related information of this node as a formatted string
    @return A string representation of the relic.*/
    public String toString(){
-      return "".format("Room %s is a%sreachable chamber ", name, getReachable() ? " " : "n un");
+      return String.format("Room %s is a%sreachable chamber ", name, getReachable() ? " " : "n un");
    }
    /** Returns the information of this node as a string formatted for a save file
    @return A save compatible string representation of the relic.*/
    public String toSaveString(){
-      return "".format(content.toSaveString(), name);
+      return String.format(content.toSaveString(), name);
    }
 }

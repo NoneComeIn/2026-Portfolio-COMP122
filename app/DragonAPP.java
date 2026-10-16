@@ -85,9 +85,9 @@ public class DragonAPP
       System.out.println("                                LAIR HOARD & SECURITY EVALUATION SUMMARY");
       System.out.println("|----------------------------------------------------------------------------------------------------------|");
       for(Entity e: hoard) {
-         System.out.println("".format("| %-9s | %-20s | %-30s | %-6s | %-7s | %-17s |", "", "", e.getAttribute1(), "", "", ""));
-         System.out.println("".format("| %-9s | %-20s | %-30s | %-6s | %-7s | %-17s |", e.getType(), e.getName(), e.getAttribute2(), e.getValueString(), e.getThreatString(), e.getAction()));
-         System.out.println("".format("| %-9s | %-20s | %-30s | %-6s | %-7s | %-17s |", "", "", e.getAttribute3(), "", "", ""));
+         System.out.println(String.format("| %-9s | %-20s | %-30s | %-6s | %-7s | %-17s |", "", "", e.getAttribute1(), "", "", ""));
+         System.out.println(String.format("| %-9s | %-20s | %-30s | %-6s | %-7s | %-17s |", e.getType(), e.getName(), e.getAttribute2(), e.getValueString(), e.getThreatString(), e.getAction()));
+         System.out.println(String.format("| %-9s | %-20s | %-30s | %-6s | %-7s | %-17s |", "", "", e.getAttribute3(), "", "", ""));
          System.out.println("|----------------------------------------------------------------------------------------------------------|");
       }
    }

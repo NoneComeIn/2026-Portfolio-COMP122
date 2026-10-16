@@ -64,7 +64,7 @@ class Path{
    /** Returns a string representation of the path.
    @return a string representation of the path*/
    public String toString(){
-      return "".join(" --> ", path);
+      return String.join(" --> ", path);
 //       StringBuilder output = new StringBuilder();
 //       for (String node: path){
 //          output.append(node);
@@ -75,7 +75,7 @@ class Path{
    /** Returns a string with supplementary path data.
    @return Max danger and name of any blocked node.*/
    public String getStats(){
-      if (blockedNode == null) return "".format("Max Danger: %d (<= 100)", maxDanger);
-      else return "".format("Blocked Node: %s (%d > 100)",  blockedNode, maxDanger);
+      if (blockedNode == null) return String.format("Max Danger: %d (<= 100)", maxDanger);
+      else return String.format("Blocked Node: %s (%d > 100)",  blockedNode, maxDanger);
    }
 }

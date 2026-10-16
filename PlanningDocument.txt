@@ -35,3 +35,9 @@ The threatLevel of a treasure item is determined by:
 4 - if value is < 10000
 5 - if value is >= 10000
 
+Notes for oral assesment:
+
+- Used a Stack for mercs because the task requores a first in last out in structure
+- Used recursion and path objects to go through each room in the labyrinth and to decide is something is reachable
+- Used a heirachy for entities to make it easy and so we could have shared methods
+- Used an ArrayList for the hoard managing because its easy to sort and we need random access.

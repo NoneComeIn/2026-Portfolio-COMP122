@@ -15,9 +15,9 @@ class Danger implements ChamberContentI{
    }
    
    public String toSaveString(){
-      return "".format("false \\%s %d", danger);
+      return String.format("false \\%s %d", danger);
    }
    public String toString(){
-      return "".format("\tDanger rating: %s", danger);
+      return String.format("\tDanger rating: %s", danger);
    }
 }
